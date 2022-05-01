@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
 import Home from './pages/Home';
 import About from './pages/About';
 import SingleCocktail from './pages/SingleCocktail';
@@ -9,11 +10,15 @@ import './App.css';
 
 function App() {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <h2>Cocktails App</h2>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='about' element={<About />} />
+        <Route path='cocktail/:id' element={<SingleCocktail />} />
+        <Route path='*' element={<Error />} />
+      </Routes>
+    </Router>
   );
 }
 
